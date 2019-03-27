@@ -2,4 +2,5 @@
 <resources>
     <dimen name="statusOfGame" />
     <dimen name="statusOfGame2">24sp</dimen>
+    <dimen name="textSize1">20sp</dimen>
 </resources>
