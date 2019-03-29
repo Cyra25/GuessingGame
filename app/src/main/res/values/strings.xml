@@ -1,6 +1,11 @@
 <resources>
     <string name="app_name">prac_02</string>
-    <string name="GuessTheGameStatus">Guess the number</string>
-    <string name="test2">Type here</string>
+    <string name="GuessTheGameStatus">Guess: </string>
+    <string name="status">Status…</string>
     <string name="Button">Go to Second activity</string>
+    <string name="hello">Hello</string>
+    <string name="win">Correct answer, You won</string>
+    <string name="small">Try something bigger</string>
+    <string name="big">Try something smaller</string>
+    <string name="goBack">Go back to main page</string>
 </resources>
