@@ -29,8 +29,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        maxValue = getSharedPreferences("value", MODE_PRIVATE);
+        maxValue = getSharedPreferences("max value", MODE_PRIVATE);
+        minValue = getSharedPreferences("min value", MODE_PRIVATE);
         statusText = (TextView) findViewById(R.id.statusText);
+
         Random random = new Random();
         secretValue = random.nextInt((maxValue - minValue) + 1) + maxValue;
 
