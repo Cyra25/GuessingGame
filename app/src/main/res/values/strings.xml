@@ -8,4 +8,6 @@
     <string name="small">Try something bigger</string>
     <string name="big">Try something smaller</string>
     <string name="goBack">Go back to main page</string>
+    <string name="max">Max: </string>
+    <string name="min">Min: </string>
 </resources>
