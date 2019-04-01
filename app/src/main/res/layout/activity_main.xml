@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3f4247"
+    android:background="#d2e0b3"
+    android:gravity="center_vertical"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -34,21 +35,24 @@
 
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="10dp">
 
         <TextView
             android:id="@+id/statusText"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@color/colorPrimary"
+            android:background="#bbce92"
             android:gravity="center"
             android:text="@string/status"
             android:textSize="18sp" />
 
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -63,5 +67,24 @@
             android:text="@string/Button" />
 
     </LinearLayout>
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="70dp"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/testPref"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="match_parent" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/testPref2"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="match_parent" />-->
+        <!--<TextView-->
+            <!--android:id="@+id/testPref3"-->
+            <!--android:layout_width="100dp"-->
+            <!--android:layout_height="match_parent" />-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

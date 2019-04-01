@@ -10,4 +10,5 @@
     <string name="goBack">Go back to main page</string>
     <string name="max">Max: </string>
     <string name="min">Min: </string>
+    <string name="validOrNotText">Minimum value is larger than maximum value. Please try again.</string>
 </resources>

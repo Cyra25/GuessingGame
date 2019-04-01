@@ -2,6 +2,7 @@ package com.example.prac_02;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.StringRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -17,23 +18,40 @@ public class SecondActivity extends AppCompatActivity {
 
     private SeekBar maxSeekBar;
     private SeekBar minSeekBar;
-    private SharedPreferences maxValue;
-    private SharedPreferences minValue;
+    private SharedPreferences preferences;
     private View view;
+    private TextView progressMax;
+    private TextView progressMin;
+    private int progressMaxValue, progressMinValue;
+    private TextView validOrNot;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.second_activity);
 
-        maxValue = getSharedPreferences("max value", MODE_PRIVATE);
-        minValue = getSharedPreferences("min value", MODE_PRIVATE);
+        validOrNot = (TextView) findViewById(R.id.validOrNot);
+        progressMax = (TextView) findViewById(R.id.progressMax);
+        progressMin = (TextView) findViewById(R.id.progressMin);
+
+        preferences = getSharedPreferences("value", MODE_PRIVATE);
+
         maxSeekBar = (SeekBar) findViewById(R.id.maxSeekBar);
+        minSeekBar = (SeekBar) findViewById(R.id.minSeekBar);
+
+    }
+    @Override
+    protected void onStart(){
+        super.onStart();
+        Log.i("Secondary", "on start called");
         maxSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar maxSeekBar, int progress, boolean fromUser) {
-                maxValue.edit().putInt("Max value", progress).apply();
-
+                progressMax.setText("" + progress);
+                preferences.edit()
+                        .putInt("max value", maxSeekBar.getProgress())
+                        .apply();
 
             }
 
@@ -48,11 +66,14 @@ public class SecondActivity extends AppCompatActivity {
             }
         });
 
-        minSeekBar = (SeekBar) findViewById(R.id.minSeekBar);
+
         minSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar minSeekBar, int progress, boolean fromUser) {
-                minValue.edit().putInt("Min value", progress).apply();
+                progressMin.setText("" + progress);
+                preferences.edit()
+                        .putInt("min value", minSeekBar.getProgress())
+                        .apply();
 
 
             }
@@ -64,30 +85,26 @@ public class SecondActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar minSeekBar) {
-
             }
         });
 
         Log.i("Secondary","on create called");
-    }
-    @Override
-    protected void onStart(){
-        super.onStart();
-        Log.i("Secondary", "on start called");
-        int progress = maxValue.getInt("max value", 0);
-        maxSeekBar.setProgress(progress);
-        int progress2 = minValue.getInt("min value", 0);
-        minSeekBar.setProgress(progress2);
+        progressMaxValue = preferences.getInt("max value", 0);
+        maxSeekBar.setProgress(progressMaxValue);
+        progressMinValue = preferences.getInt("min value", 0);
+        minSeekBar.setProgress(progressMinValue);
+
+
     }
     @Override
     protected void onStop(){
         super.onStop();
         Log.i("Secondary","on stop called");
 
-        maxValue.edit()
+        preferences.edit()
                 .putInt("max value", maxSeekBar.getProgress())
                 .apply();
-        minValue.edit()
+        preferences.edit()
                 .putInt("min value", minSeekBar.getProgress())
                 .apply();
     }
@@ -99,7 +116,21 @@ public class SecondActivity extends AppCompatActivity {
     }
 
     public void handlerToMain(View view){
-        Intent intent = new Intent (this, MainActivity.class);
-        startActivity(intent);
+        progressMaxValue = preferences.getInt("max value", 0);
+        maxSeekBar.setProgress(progressMaxValue);
+        progressMinValue = preferences.getInt("min value", 0);
+        minSeekBar.setProgress(progressMinValue);
+
+        if (progressMinValue>=progressMaxValue){
+            onStart();
+            validOrNot.setText(getString(R.string.validOrNotText));
+        }
+        else{
+
+            Intent intent = new Intent (this, MainActivity.class);
+            startActivity(intent);
+
+        }
+
     }
 }

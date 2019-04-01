@@ -1,33 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_vertical"
     android:orientation="vertical">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimaryDark">
-
-        <TextView
-            android:layout_width="117dp"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/max"
-            android:textSize="@dimen/statusOfGame2" />
-
-        <SeekBar
-            android:id="@+id/maxSeekBar"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/colorPrimary" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        android:background="@color/colorAccent">
+        android:background="#d2e0b3"
+        android:orientation="horizontal">
 
         <TextView
             android:layout_width="117dp"
@@ -38,10 +20,41 @@
 
         <SeekBar
             android:id="@+id/minSeekBar"
+            android:layout_width="224dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/progressMin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/colorPrimary" />
+            android:gravity="center"/>
     </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:background="#d2e0b3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="117dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/max"
+            android:textSize="@dimen/statusOfGame2" />
+
+        <SeekBar
+            android:id="@+id/maxSeekBar"
+            android:layout_width="224dp"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/progressMax"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center" />
+    </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="70dp"
@@ -51,8 +64,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:onClick="handlerToMain"
-            android:text="@string/goBack" />
-
+            android:text="@string/goBack"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/validOrNot"
+            android:gravity="center"
+        />
     </LinearLayout>
 
 </LinearLayout>
